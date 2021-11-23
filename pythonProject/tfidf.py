@@ -18,7 +18,7 @@ import string
 import re
 
 def removePunctuation(text):
-    punctuationfree = "".join([i for i in text if i not in string.punctuation])
+    punctuationfree = "".join([i for i in text if i not in string.punctuation]) 
     return punctuationfree
 
 def lowerText(text):
