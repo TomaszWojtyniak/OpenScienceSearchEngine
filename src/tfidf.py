@@ -18,7 +18,7 @@ import string
 import re
 
 def removePunctuation(text):
-    punctuationfree = "".join([i for i in text if i not in string.punctuation]) 
+    punctuationfree = "".join([i for i in text if i not in string.punctuation])
     return punctuationfree
 
 def lowerText(text):
@@ -97,10 +97,10 @@ def getCategoriesNames():
 def getText():
     texts = []
     for i in range(1, 122):  # 122
-        item = parser.from_file('publikacje/' + str(i) + '.pdf')
+        item = parser.from_file('files/publikacje/' + str(i) + '.pdf')
         texts.append(item['content'])
 
-        save_path = '/Users/tomaszwojtyniakmoodupteam/PycharmProjects/Inzynierka/pythonProject/publikacjeRaw'
+        save_path = '/src/publikacjeRaw'
         name_of_file = str(i)
         completeName = os.path.join(save_path, name_of_file + ".txt")
         with open(completeName, 'w') as f:
@@ -111,7 +111,7 @@ def getText():
 def getTextFromTxt():
     texts = []
     for i in range(1, 122):
-        save_path = '/Users/tomaszwojtyniakmoodupteam/PycharmProjects/Inzynierka/pythonProject/publikacjeRaw'
+        save_path = '/src/publikacjeRaw'
         name_of_file = str(i)
         completeName = os.path.join(save_path, name_of_file + ".txt")
         with open(completeName, 'r') as f:
@@ -129,15 +129,15 @@ def getKeywords(text):
         synopses.append(" ".join(bag))
         uniqueWords = set(uniqueWords).union(set(bag))
 
-        save_path = '/Users/tomaszwojtyniakmoodupteam/PycharmProjects/Inzynierka/pythonProject/keywords'
+        save_path = '/src/keywords'
         name_of_file = str(nr)
         completeName = os.path.join(save_path, name_of_file + ".txt")
         with open(completeName, 'w') as f:
             f.write(' '.join(bag))
         f.close()
         nr = nr + 1
-    save_path = '/Users/tomaszwojtyniakmoodupteam/PycharmProjects/Inzynierka/pythonProject/uniqueWords'
-    name_of_file = "uniqueWords"
+    save_path = '/src/uniqueWords'
+    name_of_file = "../files/uniqueWords"
     completeName = os.path.join(save_path, name_of_file + ".txt")
     with open(completeName, 'w') as f:
         f.write(' '.join(uniqueWords))
@@ -147,7 +147,7 @@ def getKeywords(text):
 def getSynopses():
     synopses = []
     for i in range(1, 122):
-        save_path = '/Users/tomaszwojtyniakmoodupteam/PycharmProjects/Inzynierka/pythonProject/publikacjeRaw'
+        save_path = '/src/publikacjeRaw'
         name_of_file = str(i)
         completeName = os.path.join(save_path, name_of_file + ".txt")
         with open(completeName, 'r') as f:
@@ -156,8 +156,8 @@ def getSynopses():
     return synopses
 
 def getUniqueWords():
-    save_path = '/Users/tomaszwojtyniakmoodupteam/PycharmProjects/Inzynierka/pythonProject/uniqueWords'
-    name_of_file = "uniqueWords"
+    save_path = '/src/uniqueWords'
+    name_of_file = "../files/uniqueWords"
     completeName = os.path.join(save_path, name_of_file + ".txt")
     with open(completeName, 'r') as f:
         uniqueWords = f.read().split()

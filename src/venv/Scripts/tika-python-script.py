@@ -1,4 +1,4 @@
-#!"C:\Users\wojty\OneDrive\Pulpit\PZI\Lab7 (1)\pythonProject\venv\Scripts\python.exe"
+#!"C:\Users\wojty\OneDrive\Pulpit\PZI\Lab7 (1)\src\venv\Scripts\python.exe"
 # EASY-INSTALL-ENTRY-SCRIPT: 'tika==1.24','console_scripts','tika-python'
 import re
 import sys
