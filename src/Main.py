@@ -16,4 +16,5 @@ if __name__ == "__main__":
     #saveProcessedText(text)
     text = getProcessedText(PDFs)
     linkage_matrix = get_similarity_matrix(text)
+    getSimilarityRanking(linkage_matrix, publikacje)
     #doDendogram(linkage_matrix, publikacje)

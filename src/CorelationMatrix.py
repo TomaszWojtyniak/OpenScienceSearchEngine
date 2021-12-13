@@ -1,3 +1,4 @@
+import numpy
 from scipy.cluster.hierarchy import ward, fcluster
 from sklearn.metrics.pairwise import cosine_similarity
 import os.path
@@ -20,6 +21,22 @@ def get_similarity_matrix(synopses):
     tfidf_matrix = tfidf_vectorizer.fit_transform(synopses)
     similarity_matrix = cosine_similarity(tfidf_matrix)
     w = ward(similarity_matrix)
-    print(fcluster(w, 0.1, criterion='distance'))
-
     return ward(similarity_matrix)
+
+def getSimilarityRanking(matrix, publikacje):
+    threshold = 0.01
+    ranking = fcluster(matrix, threshold, criterion='distance')
+    rankingDictionary = {i: [] for i in range(0, len(ranking))}
+    while max(ranking) != 1:
+        for index, value in enumerate(ranking):
+            print(numpy.where(ranking == value)[0])
+            similarities = numpy.where(ranking == value)[0]
+            for element in similarities:
+                print(element)
+                if element not in rankingDictionary[index] and element != index:
+                    rankingDictionary[index].append(element)
+        threshold = threshold + 0.01
+        ranking = fcluster(matrix, threshold, criterion='distance')
+
+    print(rankingDictionary)
+
