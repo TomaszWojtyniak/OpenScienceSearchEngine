@@ -4,7 +4,7 @@ from TextProcessing import *
 from Plot import *
 import nltk
 
-PDFs = 120 #122
+PDFs = 119 #122
 
 if __name__ == "__main__":
     stopwords = nltk.corpus.stopwords.words('english')

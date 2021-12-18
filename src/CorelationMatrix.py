@@ -29,14 +29,25 @@ def getSimilarityRanking(matrix, publikacje):
     rankingDictionary = {i: [] for i in range(0, len(ranking))}
     while max(ranking) != 1:
         for index, value in enumerate(ranking):
-            print(numpy.where(ranking == value)[0])
             similarities = numpy.where(ranking == value)[0]
             for element in similarities:
-                print(element)
                 if element not in rankingDictionary[index] and element != index:
                     rankingDictionary[index].append(element)
         threshold = threshold + 0.01
         ranking = fcluster(matrix, threshold, criterion='distance')
 
-    print(rankingDictionary)
+
+    for article in range(0,len(matrix)):
+        save_path = '../files/ranking'
+        name_of_file = str(article)
+        completeName = os.path.join(save_path, name_of_file + ".txt")
+
+        ranking = rankingDictionary[article]
+        similarityResult = []
+        for number in ranking:
+            similarityResult.append(publikacje[number])
+        with open(completeName, 'w') as f:
+            f.write(str(similarityResult))
+        f.close()
+
 
